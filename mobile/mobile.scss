@@ -226,13 +226,17 @@
   }
 
   .chat-message-reaction-list {
+    display: inline-flex;
+    flex-wrap: nowrap;
+    align-items: center;
+    white-space: nowrap;
     position: absolute;
     top: calc(100% + 0.35rem);
     left: 0;
     transform: none;
     margin-top: 0;
     width: max-content;
-    max-width: 100%;
+    max-width: none;
     z-index: 1;
 
     .is-by-current-user & {
