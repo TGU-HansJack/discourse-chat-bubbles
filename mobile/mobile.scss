@@ -277,6 +277,10 @@
     align-self: flex-end;
     justify-content: flex-end;
   }
+
+  .is-by-current-user &__date {
+    order: -1;
+  }
 }
 
 .chat-thread {
