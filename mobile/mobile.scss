@@ -114,7 +114,12 @@
 
   .chat-message-left-gutter {
     .is-by-current-user & {
-      display: none;
+      display: flex;
+      order: 2;
+      width: auto;
+      margin-left: 0.5rem;
+      margin-right: 0;
+      align-items: flex-end;
     }
   }
 
@@ -141,7 +146,6 @@
     width: unset;
   }
 
-  .chat-message-avatar,
   .chat-message-info__username {
     .is-by-current-user & {
       display: none;
