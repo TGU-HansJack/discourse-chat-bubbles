@@ -57,7 +57,8 @@
   }
 }
 
-body:has(.full-page-chat) {
+body:has(.full-page-chat .chat-channel),
+body:has(.full-page-chat .chat-thread) {
   --main-outlet-padding-top: 0;
 
   .d-header-wrap {
