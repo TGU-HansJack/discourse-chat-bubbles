@@ -93,17 +93,31 @@
       }
 
       &.has-reply .chat-message {
-        grid-template-columns: 1fr var(--message-left-width);
+        grid-template-columns: auto var(--message-left-width);
         grid-template-areas:
           "replyto replyto"
           "message avatar";
+        justify-content: flex-end;
       }
 
       &.has-thread-indicator .chat-message {
-        grid-template-columns: 1fr var(--message-left-width);
+        grid-template-columns: auto var(--message-left-width);
         grid-template-areas:
           "message avatar"
           "threadindicator threadindicator";
+        justify-content: flex-end;
+      }
+
+      &.has-reply .chat-reply,
+      &.has-reply .chat-message-content,
+      &.has-thread-indicator .chat-message-content {
+        justify-self: end;
+      }
+
+      &.has-reply .chat-message-content,
+      &.has-thread-indicator .chat-message-content {
+        width: fit-content;
+        max-width: calc(100vw - var(--message-left-width) - 2rem);
       }
     }
 
