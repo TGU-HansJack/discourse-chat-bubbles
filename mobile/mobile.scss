@@ -53,6 +53,9 @@
 }
 
 .chat-messages-scroller {
+  --message-left-width: 3rem;
+  --chat-bubble-avatar-size: 2.25rem;
+  --chat-bubble-reply-avatar-size: 1.5rem;
   background-color: var(--bubble-bg);
   background-image: url(check-empty($background-pattern, $enable_pattern));
   background-blend-mode: var(--bubble-bg-mode);
@@ -158,10 +161,31 @@
   }
 
   .chat-message-avatar {
+    .avatar {
+      width: var(--chat-bubble-avatar-size);
+      height: var(--chat-bubble-avatar-size);
+    }
+
     .is-by-current-user & {
       display: flex;
       justify-content: flex-end;
       margin-left: 0.5rem;
+    }
+  }
+
+  .chat-user-avatar {
+    .avatar {
+      width: var(--chat-bubble-avatar-size);
+      height: var(--chat-bubble-avatar-size);
+    }
+  }
+
+  .chat-reply {
+    .chat-user-avatar {
+      .avatar {
+        width: var(--chat-bubble-reply-avatar-size);
+        height: var(--chat-bubble-reply-avatar-size);
+      }
     }
   }
 
