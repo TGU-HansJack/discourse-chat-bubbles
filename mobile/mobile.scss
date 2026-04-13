@@ -73,7 +73,9 @@
   .chat-message.chat-message-bookmarked {
     background: initial;
 
-    .chat-message-text {
+    .chat-message-text > .chat-cooked,
+    .chat-message-text > .chat-message-collapser,
+    .chat-message-text > .chat-message-edited {
       background: var(--highlight-bg);
     }
   }
@@ -201,47 +203,78 @@
   }
 
   .chat-message-text {
-    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.35rem;
     width: fit-content;
     max-width: 100%;
     min-width: 0;
-    padding: 0.35rem 0.75rem;
-    border-radius: 10px;
-    box-shadow: 0px 1px 0px var(--primary-low-mid);
+    padding: 0;
+    border-radius: 0;
+    box-shadow: none;
+    background: transparent;
 
-    &:has(.chat-message-reaction-list) {
-      margin-bottom: 2rem;
-      overflow: visible;
+    > .chat-cooked,
+    > .chat-message-collapser,
+    > .chat-message-edited {
+      box-sizing: border-box;
+      max-width: 100%;
+      min-width: 0;
+    }
+
+    > .chat-cooked,
+    > .chat-message-collapser {
+      padding: 0.35rem 0.75rem;
+      border-radius: 10px;
+      box-shadow: 0px 1px 0px var(--primary-low-mid);
+    }
+
+    > .chat-message-edited {
+      margin-top: -0.1rem;
+      padding: 0 0.75rem 0.35rem;
+      border-radius: 0 0 10px 10px;
+      box-shadow: 0px 1px 0px var(--primary-low-mid);
     }
 
     :not(.is-by-current-user) & {
-      background: var(--bubble-bg-2);
       align-self: flex-start;
+
+      > .chat-cooked,
+      > .chat-message-collapser,
+      > .chat-message-edited {
+        background: var(--bubble-bg-2);
+      }
     }
 
     .is-by-current-user & {
-      background: var(--bubble-bg-1);
       align-self: flex-end;
+
+      > .chat-cooked,
+      > .chat-message-collapser,
+      > .chat-message-edited {
+        background: var(--bubble-bg-1);
+      }
     }
   }
 
   .chat-message-reaction-list {
+    position: static;
     display: inline-flex;
-    flex-wrap: nowrap;
+    flex-wrap: wrap;
     align-items: center;
-    white-space: nowrap;
-    position: absolute;
-    top: calc(100% + 0.35rem);
-    left: 0;
+    gap: 0.25rem;
+    white-space: normal;
     transform: none;
     margin-top: 0;
-    width: max-content;
-    max-width: none;
-    z-index: 1;
+    width: fit-content;
+    max-width: min(18rem, var(--chat-bubble-max-width));
+    z-index: auto;
+    align-self: flex-start;
 
     .is-by-current-user & {
-      left: auto;
-      right: 0;
+      align-self: flex-end;
+      justify-content: flex-end;
     }
   }
 
