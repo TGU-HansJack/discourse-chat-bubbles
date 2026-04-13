@@ -87,8 +87,24 @@
   &-container {
     background: rgba(0, 0, 0, 0);
 
-    .is-by-current-user & {
-      flex-direction: row-reverse;
+    &.is-by-current-user {
+      .chat-message {
+        flex-direction: row-reverse;
+      }
+
+      &.has-reply .chat-message {
+        grid-template-columns: 1fr var(--message-left-width);
+        grid-template-areas:
+          "replyto replyto"
+          "message avatar";
+      }
+
+      &.has-thread-indicator .chat-message {
+        grid-template-columns: 1fr var(--message-left-width);
+        grid-template-areas:
+          "message avatar"
+          "threadindicator threadindicator";
+      }
     }
 
     &:hover {
@@ -120,9 +136,18 @@
   .chat-message-left-gutter {
     .is-by-current-user & {
       display: flex;
+      justify-content: flex-end;
       margin-left: 0.5rem;
       margin-right: 0;
       align-items: flex-end;
+    }
+  }
+
+  .chat-message-avatar {
+    .is-by-current-user & {
+      display: flex;
+      justify-content: flex-end;
+      margin-left: 0.5rem;
     }
   }
 
