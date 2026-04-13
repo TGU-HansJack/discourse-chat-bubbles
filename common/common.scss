@@ -2,6 +2,7 @@
   --message-left-width: 3rem;
   --chat-bubble-avatar-size: 2.25rem;
   --chat-bubble-reply-avatar-size: 1.5rem;
+  --chat-bubble-max-width: min(74vw, calc(100vw - var(--message-left-width) - 2rem));
 }
 
 .chat-message {
@@ -14,5 +15,44 @@
   .chat-reply .chat-user-avatar .chat-user-avatar__container .avatar {
     width: var(--chat-bubble-reply-avatar-size);
     height: var(--chat-bubble-reply-avatar-size);
+  }
+
+  .chat-message-text,
+  .chat-message-collapser,
+  .chat-message-collapser-body,
+  .chat-message-collapser-header,
+  .chat-cooked,
+  .chat-uploads {
+    max-width: 100%;
+    min-width: 0;
+  }
+
+  .chat-message-text {
+    overflow: hidden;
+  }
+
+  .chat-message-collapser-header {
+    width: 100%;
+  }
+
+  .chat-message-collapser-link-small {
+    flex: 1 1 auto;
+    min-width: 0;
+  }
+
+  .chat-img-upload,
+  .chat-video-upload,
+  .chat-other-upload,
+  .chat-uploads > *,
+  .chat-message-collapser-body img,
+  .chat-message-collapser-body video {
+    box-sizing: border-box;
+    display: block;
+    max-width: 100%;
+    height: auto;
+  }
+
+  .chat-other-upload {
+    overflow-wrap: anywhere;
   }
 }
