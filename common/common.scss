@@ -56,3 +56,15 @@
     overflow-wrap: anywhere;
   }
 }
+
+body:has(.full-page-chat) {
+  --main-outlet-padding-top: 0;
+
+  .d-header-wrap {
+    display: none;
+  }
+
+  #main-outlet {
+    padding-top: 0;
+  }
+}
